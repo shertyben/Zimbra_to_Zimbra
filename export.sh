@@ -12,29 +12,34 @@ cd /home/migration/
 
 WD="/home/migration"
 remote="A.B.C.D"
-Directory_Paths= "accounts accounts_details aliases distro domains mailboxes passwords quotas signatures"
+Directory_Paths="accounts account_details aliases distro domains mailboxes passwords quotas signatures"
+
+# Begin Directories creation
 
 echo "****************************";
 echo "!Début Création Répertoires!" ;
 echo "****************************";
 
-for dir in Directory_Paths;
+for dir in $Directory_Paths ;
 do
         echo " >>>> Checking if directory $dir exists ..." ;
 
         if [ ! -d "$WD/$dir" ]; then
-                echo " >>>>@@@@ Directory $dir doesn't exists ..." ;
-                mkdir -p $WD/$dir# Control will enter here if $DIRECTORY doesn't exist.
-                echo " >>>>@@@@ Directory $dir created..." ;
+				echo " >>>>   @@@@ Directory $dir doesn't exists ..." ;
+				mkdir -p $WD/$dir
+                echo " >>>>   @@@@ Directory $dir created..." ;
         else
-                echo " >>>>@@@@ Directory $dir exists ..." ;
-                rm -r $WD/$dir/*
-                echo " >>>>@@@@ Directory $dir truncated ..." ;
+                echo " >>>>   @@@@ Directory $dir exists ..." ;
+#               rm -r $WD/$dir
+                echo " >>>>   @@@@ Directory $dir truncated ..." ;
         fi
 done
+
 echo "**************************";
 echo "!Fin Création Répertoires!" ;
 echo "**************************";
+echo " " ;
+echo " " ;
 
 
 
